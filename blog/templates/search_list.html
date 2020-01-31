@@ -1,0 +1,70 @@
+{% extends 'main-page.html' %}
+
+{% block search %}
+    <center>
+        <form action="{% url 'search_results' %}" method="get">
+            <input name="q" type="text" placeholder="Поиск...">
+        </form>
+    </center>
+{% endblock %}
+
+{% block content %}
+    <style>
+        .footer {
+            position: fixed;
+        }
+
+        .content-block {
+            box-sizing: content-box;
+            height: 70px;
+            width: 250px;
+            max-width: 250px;
+            background-color: #DCECFA;
+            border: 1px solid #C4E2FC;
+            box-shadow: rgba(0,0,0,0.5);
+            border-radius: 5px;
+            padding: 5px;
+            margin-top: 15px;
+            margin-left: 50px;
+            font-size: 12px;
+        }
+
+        .content-text {
+            box-sizing: content-box;
+            padding-left: 10px;
+            max-width: 170px;
+        }
+
+        .error-block {
+            margin-top: 15px;
+        }
+    </style>
+    {% if object_list %}
+        {% for search in object_list %}
+
+            <div class="conteiner-fluid">
+                <div class="row content-block float-left">
+                    <div class="col-mg-4">
+                        <img class="rounded float-left img-thumbnail" src="media/{{ search.article_image }}"
+                             width="64"
+                             height="64">
+                    </div>
+                    <div class="col-mg-8">
+                        <div class="content-text">
+                            <a href="{% url 'article-detail' pk=search.pk %}"
+                               class="card-title"><b>{{ search.article_title }}</b>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </ul>
+        {% endfor %}
+    {% elif object_list.all != object_list.get %}
+        <div class="card card-body error-block">
+            <h4 class="card-title float-none">
+                По вашему запросу ничего не нашлось:(
+            </h4>
+        </div>
+    {% endif %}
+{% endblock %}

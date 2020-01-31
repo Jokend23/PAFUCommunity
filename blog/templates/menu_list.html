@@ -1,0 +1,11 @@
+{% extends 'main-page.html' %}
+
+{% block menu %}
+
+    {% for menu in menus %}
+        <ul>
+            <li>{{ menu.article_type }}</li>
+        </ul>
+    {% endfor %}
+
+{% endblock %}

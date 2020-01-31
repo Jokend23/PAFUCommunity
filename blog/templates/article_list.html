@@ -1,0 +1,181 @@
+{% extends 'index.html' %}
+
+{% block news %}
+    {% for new in news %}
+        <style>
+            .news {
+                display: table-cell;
+                padding-left: 50px;
+                margin-left: 50px;
+                position: relative;
+                background-clip: border-box;
+                border-radius: .25rem;
+
+            }
+
+            .block-text {
+                box-sizing: content-box;
+                size: 100%;
+                height: 170px;
+                width: 200px;
+                top: 10px;
+                padding-left: 40px;
+            }
+
+            .news-image {
+                box-sizing: content-box;
+                box-shadow: 0px 0px 5px 1px black;
+                position: relative;
+                border-radius: 10px;
+                height: 170px;
+                width: 220px;
+                z-index: -2;
+            }
+
+            .image-secondary {
+                box-sizing: content-box;
+                width: 100%;
+                height: 100%;
+                box-shadow: inset 0px 0px 100px 10px black;
+                border-radius: 10px;
+
+            }
+
+        </style>
+        <div class="text-white news" style="border-radius: 20px;">
+            <a href="{% url 'news_detail' pk=new.pk %}" class="text-white">
+                <div class="image-secondary">
+                    <img src="media/{{ new.news_image }}" class="news-image" alt="...">
+                </div>
+
+                <div class="card-img-overlay">
+                    <div class="block-text">
+                        <h6 class="card-title">{{ new.news_title }}</h6>
+                        <p class="card-text">{{ new.news_text_short }}</p>
+                        <p class="card-text">{{ new.news_published_date }}</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+
+    {% endfor %}
+
+{% endblock %}
+
+{% block search %}
+    <form class="form-inline" action="{% url 'search_results' %}" method="get">
+        <input class="form-control mr-sm-2" name="q" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+{% endblock %}
+
+{% block content %}
+    {% for article in filter.qs %}
+        <style>
+            .art_content {
+                padding-top: 0px;
+                margin-left: 50px;
+            }
+
+            .art_text {
+                color: white;
+                max-height: 250px;
+            }
+
+            .art_image {
+                object-fit: cover;
+                height: 250px;
+                width: 350px;
+                border: 2px solid #c0c0c0;
+            }
+
+            .image-block {
+                paddin-top: 15px;
+            }
+
+            .content-text {
+                padding-left: 10px;
+                max-width: 170px;
+            }
+
+            .content-block {
+                box-sizing: content-box;
+                width: 240px;
+                max-width: 240px;
+                background-color: #DCECFA;
+                border: 1px solid #C4E2FC;
+                border-radius: 5px;
+                padding: 5px;
+                margin-top: 10px;
+                margin-left: 10px;
+                font-size: 12px;
+            }
+
+            .top-content {
+                background-color: #B7CCDE;
+            }
+
+            .post {
+                margin: 10px;
+            }
+        </style>
+        <div class="art_content">
+            <div class="card-footer text-muted top-content" style="background-image: url(/media/fon5.jpg)">
+                <div class="post_teasercontainer">
+                    <div class="post_teaser_publ">
+                        <h3 class="card-title mb-0 p-0"><a
+                                href="{% url 'article-detail' pk=article.pk %}" class="
+text-white">{{ article.article_title }}</a></h3>
+                    </div>
+                </div>
+            </div>
+            <div class="card mb-5 px-0 mx-0">
+                <div class="card-header p-0 mx-0">
+                    <div class="card-body p-1 px-md-2 px-lg-3 post ">
+                        <div class="row">
+                            <div class="col-lg-6 ">
+                                <div class="text-center mb-3 top-content">
+                                    {% if article.article_image %}
+                                        <a href="{% url 'article-detail' pk=article.pk %}"><img
+                                                src="media/{{ article.article_image }}"
+                                                class="img-thumbnail rounded float-left img-max art_image mx-auto d-block"
+                                                alt=".."></a>
+                                    {% endif %}
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <p class="art_text">{{ article.article_text_short|safe }}</p>
+                                <p class="text-right">
+                                    <a href="{% url 'article-detail' pk=article.pk %}">Читать далее...</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer text-muted">
+                        <div class="post_teaser container">
+                            <div class="post_teaser_publ">
+                                <center>
+                                    <i class="fas fa-user" title="Автор"
+                                       style="padding-left: 0px;"></i> {{ article.article_author }}
+                                    <i class="far fa-calendar" title="Дата публикации"
+                                       style="padding-left: 10px;"></i> {{ article.article_published_date }}
+                                    <i class="fas fa-comments" title="Кол-во комментариев"
+                                       style="padding-left: 10px;"></i>
+                                    <a href="{% url 'article-detail' pk=article.pk %}#disqus_thread"></a>
+                                    <i class="fas fa-tags" title="Тэги" style="padding-left: 5px;"></i><a
+                                        href="#"
+                                        class="btn btn-info btn-sm text-white">{{ article.article_type }}</a>
+                                </center>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script id="dsq-count-scr" src="//compade.disqus.com/count.js" async></script>
+
+    {% endfor %}
+{% endblock %}
+</html>

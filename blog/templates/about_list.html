@@ -1,0 +1,53 @@
+{% extends 'main-page.html' %}
+
+{% block search %}
+    <center>
+    <form action="{% url 'search_results' %}" method="get">
+        <input name="q" type="text" placeholder="Поиск...">
+    </form>
+    </center>
+{% endblock %}
+
+{% block content %}
+    <style>
+        .art_content {
+            padding-top: 15px;
+        }
+
+        .comment_content {
+
+            padding-top: -20px;
+        }
+
+    </style>
+    <div class="art_content">
+        <div class="card mb-5 px-0 mx-0">
+            <div class="card-header p-0 mx-0">
+                <div class="card-body p-1 px-md-2 px-lg-3 post">
+                    <h3 class="card-title mb-0 p-0">{{ about_list.title|safe }}</h3>
+                    <div class="text-center mb-3">
+                        {% if about_list.image %}
+                            <img src=" /media/{{ about_list.image }}" class="img-fluid img-max" alt="..">
+                        {% endif %}
+                    </div>
+                    <p>{{ about_list.text|safe }}</p>
+                </div>
+                {% if about_list.files.all %}
+                    <div class="card-footer text-muted">
+                        <div class="post_teaser container">
+                            <div class="post_teaser_publ">
+
+                                <h5>Прикрепленные файлы: </h5>
+                                {% for f in about_list.files.all %}
+                                    <small><a href="/media/{{ f.file }}" download>{{ f.file_name }}</a><br></small>
+                                {% endfor %}
+
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+

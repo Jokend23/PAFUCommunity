@@ -1,0 +1,103 @@
+{% extends 'main-page.html' %}
+
+{% block search %}
+    <center>
+        <form action="{% url 'search_results' %}" method="get">
+            <input name="q" type="text" placeholder="Поиск...">
+        </form>
+    </center>
+{% endblock %}
+
+{% block content %}
+    <style>
+        .art_content {
+            padding-top: 15px;
+        }
+
+        .top-content {
+            border-radius: 4px;
+            background-image: url(/media/fon5.jpg)
+        }
+    </style>
+    <div class="art_content">
+        <div class="card mb-5 px-0 mx-0">
+            <div class="card-header p-0 mx-0" >
+                <div class="card-footer text-muted top-content">
+                    <div class="post_teaser container">
+                        <div class="post_teaser_publ text-white">
+                            <center>
+                                <i class="fas fa-user" title="Автор"
+                                   style="padding-left: 10px;"></i> {{ article_detail.article_author }}
+                                <i class="far fa-calendar" title="Дата публикации"
+                                   style="padding-left: 10px;"></i> {{ article_detail.article_published_date }}
+                                <i class="fas fa-tags" title="Тэги" style="padding-left: 10px;"></i><a
+                                    href="#"
+                                    class="btn btn-info btn-sm text-white">{{ article_detail.article_type }}</a>
+                            </center>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body p-1 px-md-2 px-lg-3 post">
+                    <h4 class="card-title mb-0 p-0">{{ article_detail.article_title }}</h4>
+                    <div class="text-center mb-3">
+                        {% if article_detail.article_image %}
+                            <img src=" /media/{{ article_detail.article_image }}" class="img-fluid img-max" alt="..">
+                        {% endif %}
+                    </div>
+                    <p>{{ article_detail.article_text|safe }}</p>
+                </div>
+                {% if article_detail.article_files.all %}
+                    <div class="card-footer text-muted">
+                        <div class="post_teaser container">
+                            <div class="post_teaser_publ">
+
+                                <h5>Прикрепленные файлы: </h5>
+                                {% for f in article_detail.article_files.all %}
+                                    <small><a href="/media/{{ f.file }}" download>{{ f.file_name }}</a><br></small>
+                                {% endfor %}
+
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <div class="comment_content">
+        <div class="card mb-5 px-0 mx-0">
+            <div class="card-header p-0 mx-0">
+                <div class="card-footer text-muted">
+                    <div class="post_teaser container">
+                        <div class="post_teaser_publ">
+                            <h6 class="card-title mb-0 p-0">Комментарии к статье:</h6><h4 class="card-title mb-0 p-0">
+                            <b>{{ article_detail.article_title }}</b></h4>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body p-1 px-md-2 px-lg-3 post">
+                    <div class="text-center mb-3">
+                    </div>
+                    <div id="disqus_thread"></div>
+                    <script>
+                        (function () { // DON'T EDIT BELOW THIS LINE
+                            var d = document, s = d.createElement('script');
+                            s.src = 'https://compade.disqus.com/embed.js';
+                            s.setAttribute('data-timestamp', +new Date());
+                            (d.head || d.body).appendChild(s);
+                        })();
+                    </script>
+                    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments
+                        powered by Disqus.</a></noscript>
+                    <p></p>
+                </div>
+                <!-- <div class="card-footer text-muted">
+                    <div class="post_teaser container">
+                        <div class="post_teaser_publ">
+                        </div>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+    </div>
+{% endblock %}

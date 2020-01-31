@@ -1,0 +1,163 @@
+/*@font-face {*/
+    /*font-family: 'jobcenterblack';*/
+    /*src: url('../fonts/jobcenter-webfont.woff2') format('woff2'),*/
+         /*url('../fonts/jobcenter-webfont.woff') format('woff');*/
+    /*font-weight: normal;*/
+    /*font-style: normal;*/
+/*}*/
+.top-banner h1,
+.top-banner h2{
+    font-weight: 900;
+}
+
+.banner-block-btn{
+    display: block;
+    text-align: center;
+    vertical-align: middle;
+    border-radius: 40px;
+    border: solid 2px #ffffff;
+    height: 50px;
+    width: 280px;
+    margin: 20px 50%;
+    background: rgba(59,97,136,0.5);
+    color: #ffffff;
+    font-weight: 900;
+    font-size: large;
+    line-height: 2.7;
+}
+.banner-block-btn:hover, .banner-block-btn:active, .banner-block-btn:focus{
+    background: rgba(59,97,136,0.7);
+    color: #ffffff;
+    text-decoration: none;
+}
+
+@media all and (min-width: 992px){
+    .banner-block-btn{
+        margin-bottom: 0px;
+    }
+}
+@media (max-width: 991px) {
+    .banner-block-btn {
+        margin: 20px auto;
+    }
+}
+.top-banner{
+    background-position: center center;
+    width:100%;
+    background-size: cover;
+    margin-top: -20px;
+    margin-bottom: 20px;
+}
+
+.top-banner h1,
+.top-banner h2{
+    margin-top: 0;
+    margin-bottom: 0;
+    color: #fff;
+}
+
+.top-banner .main_page_logo{
+    margin-bottom: 10px;
+    margin-top: 10px;
+    max-width: 50%;
+}
+
+.top-banner .tspu-logo{
+    position: absolute;
+    left: 15px;
+    bottom: -35px;
+}
+.top-banner .mock-height{
+    height: 300px;
+}
+
+.blue_grad{
+    padding-top: 6px;
+    padding-bottom: 12px;
+}
+
+.blue_grad.left-right{
+    background: -moz-linear-gradient(left, rgba(59,97,136,0.7) 0%, rgba(92,141,184,0.7) 50%, rgba(99,150,194,0) 60%, rgba(125,185,232,0) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(left, rgba(59,97,136,0.7) 0%,rgba(92,141,184,0.7) 50%,rgba(99,150,194,0) 60%,rgba(125,185,232,0) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to right, rgba(59,97,136,0.7) 0%,rgba(92,141,184,0.7) 50%,rgba(99,150,194,0) 60%,rgba(125,185,232,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3b6188', endColorstr='#007db9e8',GradientType=1 ); /* IE6-9 */
+}
+.blue_grad.right-left {
+    background: -moz-linear-gradient(left, rgba(125,185,232,0) 0%, rgba(99,150,194,0) 40%, rgba(92,141,184,0.7) 50%, rgba(59,97,136,0.7) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(left, rgba(125,185,232,0) 0%,rgba(99,150,194,0) 40%,rgba(92,141,184,0.7) 50%,rgba(59,97,136,0.7) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to right, rgba(125,185,232,0) 0%,rgba(99,150,194,0) 40%,rgba(92,141,184,0.7) 50%,rgba(59,97,136,0.7) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#007db9e8', endColorstr='#3b6188',GradientType=1 ); /* IE6-9 */
+}
+.article-action::before{
+    display: block;
+    content: '';
+    height: 100%;
+    box-shadow: 4px 10px 12px 12px white;
+    position: relative;
+    top: -15px;
+    margin-left: 12px;
+    margin-right: 12px;
+}
+.article-action{
+    margin-right: 12px;
+    margin-top: 5px !important ;
+}
+.article, .full-article{
+    margin-top: 15px;
+}
+.shadow_item_inner h3{
+    margin: 10px 0;
+}
+.shadow_item_inner h6{
+    margin-top: 16px;
+}
+article img {
+    width: 100%;
+    max-height: 250px;
+    object-fit: cover;
+}
+
+article h3{
+    font-size: 20px;
+}
+
+.btn-group-vertical>.btn+.btn{
+    margin-top: auto;
+}
+.socialmedia_links{
+    margin-bottom: 20px;
+}
+.socialmedia_links .vk,
+.socialmedia_links .fb,
+.socialmedia_links .ok {
+    border: 0;
+}
+.socialmedia_links .vk{
+    background-color: #45668e;
+    color: white;
+}
+.socialmedia_links .fb{
+    background-color: #3b5998;
+    color: white;
+}
+.socialmedia_links .ok{
+    background-color: #ed812b;
+    color: white;
+}
+
+.hot_vac h4{
+    margin-top: 7px;
+    margin-bottom: 7px;
+}
+.hot_vac h6{
+    margin-top: 3px;
+    margin-bottom: 3px;
+}
+
+.job_ru h4{
+    margin-top: 3px;
+    margin-bottom: 3px;
+}
+.job_ru .list-group-item{
+    padding: 3px 15px;
+}

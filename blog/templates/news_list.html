@@ -1,0 +1,65 @@
+{% extends 'main-page.html' %}
+
+{% block search %}
+    <center>
+        <form action="{% url 'search_results' %}" method="get">
+            <input name="q" type="text" placeholder="Поиск...">
+        </form>
+    </center>
+
+{% endblock %}
+
+{% block content %}
+    {% for l in list %}
+        <style>
+            .content-news {
+                box-sizing: content-box;
+                width: 100%;
+                height: 150px;
+                background: linear-gradient(to top, #122b40, #31708f);
+                box-shadow: 0px 0px 10px 2px;
+                margin-top: 15px;
+                margin-bottom: 10px;
+                border: 1px solid #122b40;
+                border-radius: 7px;
+                padding: 10px;
+            }
+
+            .text {
+                position: absolute;
+                box-sizing: content-box;
+                width: 95%;
+                height: 100%;
+            }
+        .image-news-block {
+            box-sizing: content-box;
+            height: 150px;
+            width: 170px;
+            border-radius: 5px;
+            background-color: #C8C8C8;
+            border: 1px solid #8c8c8c;
+            box-shadow: 0px 0px 6px 1px black;
+        }
+        </style>
+        <div class="content-news">
+            <a href="{% url 'news_detail' pk=l.pk %}" class="text-white">
+                <div class="conteiner-fluid">
+                    <div class="row">
+                        <div class="col-md-3">
+                        <div class="image-news">
+                            <img src="/media/{{ l.news_image }}" class="image-news-block">
+                        </div>
+                        </div>
+                        <div class="col-md-9">
+                        <div class="text">
+                            <h5>{{ l.news_title }}</h5>
+                            <p>{{ l.news_text_short }}</p>
+                            <p class="text-secondary float-right">{{ l.news_published_date }}</p>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    {% endfor %}
+{% endblock %}

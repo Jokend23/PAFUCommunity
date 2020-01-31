@@ -1,0 +1,92 @@
+{% extends 'index.html' %}
+<html>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<link rel="stylesheet" href="{% static 'font-awesome/css/font-awesome.min.css' %)">
+{% block search %}
+ <form action="" method="get">
+    {{ filter.form.as_p }}
+    <input type="submit" value="Искать"/>
+    </form>
+{% endblock %}
+
+{% block content %}
+    {% for article in filter.qs %}
+        <style>
+            .art_content {
+                padding-top: 15px;
+            }
+
+            .art_text {
+                max-height: 250px;
+            }
+
+            .art_image {
+                object-fit: cover;
+                height: 250px;
+                width: 350px;
+                border: 2px solid #c0c0c0;
+            }
+
+            .image-block {
+                paddin-top: 15px;
+            }
+        </style>
+        <div class="art_content">
+            <div class="card mb-5 px-0 mx-0">
+                <div class="card-header p-0 mx-0">
+                    <div class="card-body p-1 px-md-2 px-lg-3 post ">
+                        <h3 class="card-title mb-0 p-0"><a
+                                href="{% url 'article-detail' pk=article.pk %}" class="
+text-dark">{{ article.article_title }}</a></h3>
+                        <div class="row">
+                            <div class="col-lg-6 ">
+                                <div class="text-center mb-3">
+                                    {% if article.article_image %}
+                                        <a href="{% url 'article-detail' pk=article.pk %}"><img
+                                                src="media/{{ article.article_image }}"
+                                                class="img-thumbnail rounded float-left img-max art_image mx-auto d-block"
+                                                alt=".."></a>
+                                    {% endif %}
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <p class="art_text">{{ article.article_text_short|safe }}</p>
+                                <p class="text-right">
+                                    <a href="{% url 'article-detail' pk=article.pk %}">Читать далее...</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer text-muted">
+                        <div class="post_teaser container">
+                            <div class="post_teaser_publ">
+                                <center>
+                                    <i class="fas fa-user" title="Автор"
+                                       style="padding-left: 0px;"></i> {{ article.article_author }}
+                                    <i class="far fa-calendar" title="Дата публикации"
+                                       style="padding-left: 10px;"></i> {{ article.article_published_date }}
+                                    <i class="fas fa-comments" title="Кол-во комментариев"
+                                       style="padding-left: 10px;"></i>
+                                    <a href="{% url 'article-detail' pk=article.pk %}#disqus_thread"></a>
+                                    <i class="fas fa-tags" title="Тэги" style="padding-left: 5px;"></i><a
+                                        href="/tag/psikhologiia/"
+                                        class="btn btn-secondary btn-sm">{{ article.article_type }}</a>
+                                </center>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script id="dsq-count-scr" src="//compade.disqus.com/count.js" async></script>
+
+    {% endfor %}
+{% endblock %}

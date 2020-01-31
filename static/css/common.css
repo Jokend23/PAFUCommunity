@@ -1,0 +1,267 @@
+/* FOOTER */
+footer img{
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+footer .dev-info{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    color: white;
+}
+.dev-info p{
+    margin-bottom: 0;
+}
+.dev-info a{
+    color: white;
+}
+/* ENDOF FOOTER */
+
+/* BOOTSTRAP additional styles */
+.multiple-checkbox ul {
+    padding-left: 0;
+    list-style: none;
+}
+.navbar{
+    border-radius: 0;
+}
+.navbar-brand{
+    padding-top: 4px;
+    padding-bottom: 4px;
+}
+.navbar-fixed-bottom .navbar-brand{
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+.navbar-inverse {
+    background-color: #002;
+    background-image: linear-gradient(rgba(255, 255, 255, .2) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, .1) 1px, transparent 1px);
+    background-size: 2px 2px;
+}
+.well{
+    background-color: #fff;
+}
+/* ENDOF BOOTSTRAP additional styles */
+
+/* SEARCH FORM */
+.dropping{
+    border-bottom: dotted 1px black;
+    cursor: pointer;
+}
+/* ENDOF SEARCH FORM */
+
+/* SYSTEM STYLE */
+body {
+    background-color: #f5f5f5;
+}
+/* ENDOF SYSTEM STYLE */
+
+/* USER PAGE */
+.edu-item, .edu-items, .user_info{
+    margin-bottom: 12px;
+}
+.create_action{
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+.resume-photo, .org_logo{
+    max-width: 100%;
+    max-height: 400px;
+}
+/* ENDOF USER PAGE */
+
+/* COMMON ITEMS */
+.file_upload {
+    margin: 5px;
+}
+.file {
+    padding-top: 10px;
+}
+
+.user_photo_thumb{
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+}
+.shadow-item{
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.06), 0 4px 10px rgba(0, 0, 0, 0.06);
+    padding: 0 0 12px 0;
+    border: none;
+    background-color: #fff;
+    margin-bottom: 20px;
+}
+.shadow-item.vacancy, .shadow-item.resume{
+    padding: 12px;
+    margin-bottom: 15px;
+}
+.shadow-item.vacancy h3, .shadow-item.resume h3{
+    margin-top: 10px;
+}
+.shadow_item_inner {
+    padding: 12px 12px 0;
+}
+.main-content{
+    margin-top: -15px;
+}
+.main-content.top-offset{
+    padding-top: 15px;
+}
+.header-content h1{
+    margin: 0 0 15px 0 ;
+}
+form{
+    margin-top: 15px;
+}
+label.required:after{
+    content: ' *';
+    color: red;
+}
+img.full-image{
+    width: 100%;
+}
+.compensation{
+    margin-top: 15px;
+}
+.full-article{
+    margin-top: 15px;
+}
+
+.icon{
+    display: inline-block;
+    border-right: 1px solid #ddd;
+    width: 40px;
+    height: 40px;
+    margin: -10px 10px -15px -2px;
+}
+.icon:after{
+    background: url("../img/icons_sprite.png") no-repeat;
+    display: block;
+    content: '';
+    height: 24px;
+    width: 24px;
+    margin-top: 8px;
+}
+.icon.icon-news:after{
+    background-position: -48px 0;
+}
+.icon.icon-all-vacancies:after{
+    background-position: -120px 0;
+}
+.icon.icon-all-resumes:after{
+    background-position: -72px 0;
+}
+.icon.icon-find-vacancies:after{
+    background-position: -144px 0;
+}
+.icon.icon-find-resumes:after{
+    background-position: -96px 0;
+}
+.icon.icon-info:after{
+    background-position: -24px 0;
+}
+.icon.icon-contacts:after{
+    background-position: 0 0;
+}
+
+.shadow-item.resume.hot, .shadow-item.vacancy.hot{
+    padding: 10px;
+}
+.hot{
+    border: 2px #faebcc solid;
+    background: #fcf8e3;
+}
+.hot:after{
+    display: block;
+    content: '';
+    width: 37px;
+    height: 39px;
+    background: url("../img/hot_icon.png");
+    position: absolute;
+    top: 10px;
+    right: 25px;
+}
+
+.show_seeker_contacts, .show_employer_contacts{
+    margin: 15px 0;
+}
+/* ENDOF COMMON ITEMS */
+
+/* USER OFFER PAGE */
+.vacancy-block, .resume-block{
+    margin-top: 15px;
+}
+.vacancy-block .row, .resume-block .row{
+    margin-bottom: 5px;
+}
+
+.add_favorites{
+    cursor: pointer;
+    color: #337ab7;
+    margin: 0;
+}
+/* ENDOF USER OFFER PAGE */
+
+/* RESPONSIVE */
+@media all and (min-width: 768px){
+    .article-desc{
+        max-height: 400px;
+        overflow: hidden;
+        padding: 0px;
+    }
+    .article-action{
+        margin-top: 10px;
+    }
+}
+@media all and (min-width: 992px) and (max-width: 1199px){
+    .top-banner{
+        background-position-x: right;
+    }
+    .mock-height{
+        height: 200px !important;
+    }
+}
+@media all and (max-width: 1199px){
+    .shadow_item_inner h6{
+        margin-top: 10px;
+    }
+}
+
+
+@media all and (max-width: 991px){
+    .tspu-logo{
+        position: static !important;
+        margin-bottom: 15px;
+        margin-top: 15px;
+    }
+    .blue_grad{
+        background: #3c6289 !important;
+    }
+    .top-banner h1{
+        font-size: x-large;
+        text-align: center !important;
+    }
+    .top-banner h2{
+        font-size: large;
+        text-align: center !important;
+    }
+    .top-banner .main_page_logo{
+        max-width: 80%;
+    }
+    /*.top-banner{*/
+        /*background-position: left;*/
+    /*}*/
+    footer .dev-info .col-md-4{
+        text-align: center;
+    }
+}
+@media all and (min-width: 768px) and (max-width: 992px) {
+    .mock-height{
+        height: 200px !important;
+    }
+}
+@media all and (max-width: 767px) {
+    .mock-height{
+        height: 50px !important;
+    }
+
+}
+/* ENDOF RESPONSIVE */

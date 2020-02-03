@@ -1,16 +1,31 @@
 {% extends 'main-page.html' %}
 
-{% block content %}
+{% block search %}
+    <center>
+        <form class="form-inline" action="{% url 'search_results' %}" method="get">
+            <input class="form-control mr-sm-2" name="q" type="search" placeholder="Search" aria-label="Search">
+        </form>
+    </center>
+{% endblock %}
 
- <div class="panel panel-success">
-  <div class="panel-heading">
-    <h2 class="panel-title"></h2>
-  </div>
-  <div class="panel-body">
-<div class="well well-lg" align="center">
-    <h3>Спасибо, Ваше сообщение отправлено!</h3>
-    <div align="center"><a href="/"><button type="button" class="btn btn-info">Вернутся на главную</button></a></div>
-  </div>
-</div>
-</div>
+{% block content %}
+    <div class="card mb-5 px-0 mx-0">
+        <div class="card-header p-0 mx-0">
+            <div class="card-body p-1 px-md-2 px-lg-3 post ">
+                <div class="panel panel-success">
+                    <div class="panel-heading">
+                        <h2 class="panel-title"></h2>
+                    </div>
+                    <div class="panel-body">
+                        <div class="well well-lg" align="center">
+                            <h3>Спасибо, Ваше сообщение отправлено!</h3>
+                            <div align="center"><a href="/">
+                                <button type="button" class="btn btn-info"  style="margin-top: 350px;">Вернутся на главную</button>
+                            </a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

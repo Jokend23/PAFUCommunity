@@ -1,8 +1,83 @@
 {% extends 'main-page.html' %}
 
+{% block search %}
+    <center>
+        <form class="form-inline" action="{% url 'search_results' %}" method="get">
+            <input class="form-control mr-sm-2" name="q" type="search" placeholder="Search" aria-label="Search">
+        </form>
+    </center>
+{% endblock %}
+
 {% block content %}
-    <p class="text-white">{{ news_detail.news_author }}</p></br>
-    <p class="text-white">{{ news_detail.news_title }}</p></br>
-    <p class="text-white">{{ news_detail.news_text_short }}</p></br>
-    <p class="text-white">{{ news_detail.news_text }}</p></br>
+    <style>
+        .image-news-block {
+            box-shadow: inset 0px 0px 50px 2px black;
+            border-radius: 3px;
+            overflow: hidden;
+            box-sizing: content-box;
+            height: 250px;
+        }
+
+        .top-image {
+            position: relative;
+            bottom: 50px;
+        }
+    </style>
+    <div class="card mb-5 px-0 mx-0">
+        <div class="card-header p-0 mx-0">
+            <div class="card-footer text-muted top-content">
+                <div class="post_teaser container">
+                    <div class="post_teaser_publ text-black">
+                        <center>
+                            <i class="fas fa-user" title="Автор"
+                               style="padding-left: 10px;"></i> {{ news_detail.news_author }}
+                            <i class="far fa-calendar" title="Дата публикации"
+                               style="padding-left: 10px;"></i> {{ news_detail.news_published_date }}
+                            <i class="fas fa-comments" title="Кол-во комментариев"
+                               style="padding-left: 10px;"></i>
+                            <a href="{% url 'news_detail' pk=news_detail.pk %}#disqus_thread"></a>
+                        </center>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer text-muted top-content image-news-block">
+                <div class="post_teaser container">
+                    <div class="post_teaser_publ">
+                        <div class="">
+                            <center>
+                                <img class="top-image" src="/media/{{ news_detail.news_image }}">
+                            </center>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body p-1 px-md-2 px-lg-3 post ">
+                <h4 class="text-black">{{ news_detail.news_title }}</h4></br>
+                <p class="text-black">{{ news_detail.news_text_short }}</p></br>
+                <p class="text-black">{{ news_detail.news_text }}</p></br>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="card mb-5 px-0 mx-0">
+        <div class="card-header p-0 mx-0">
+            <div class="card-body p-1 px-md-2 px-lg-3 post">
+                <div class="text-center mb-3">
+                </div>
+                <div id="disqus_thread"></div>
+                <script>
+                    (function () { // DON'T EDIT BELOW THIS LINE
+                        var d = document, s = d.createElement('script');
+                        s.src = 'https://compade.disqus.com/embed.js';
+                        s.setAttribute('data-timestamp', +new Date());
+                        (d.head || d.body).appendChild(s);
+                    })();
+                </script>
+                <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments
+                    powered by Disqus.</a></noscript>
+                <p></p>
+            </div>
+        </div>
+    </div>
 {% endblock %}

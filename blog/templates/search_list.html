@@ -2,8 +2,8 @@
 
 {% block search %}
     <center>
-        <form action="{% url 'search_results' %}" method="get">
-            <input name="q" type="text" placeholder="Поиск...">
+        <form class="form-inline" action="{% url 'search_results' %}" method="get">
+            <input class="form-control mr-sm-2" name="q" type="search" placeholder="Search" aria-label="Search">
         </form>
     </center>
 {% endblock %}
@@ -11,7 +11,7 @@
 {% block content %}
     <style>
         .footer {
-            position: fixed;
+            margin-top: 50px;
         }
 
         .content-block {
@@ -26,6 +26,7 @@
             padding: 5px;
             margin-top: 15px;
             margin-left: 50px;
+            margin-bottom: 10px;
             font-size: 12px;
         }
 

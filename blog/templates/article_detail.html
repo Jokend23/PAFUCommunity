@@ -2,8 +2,8 @@
 
 {% block search %}
     <center>
-        <form action="{% url 'search_results' %}" method="get">
-            <input name="q" type="text" placeholder="Поиск...">
+        <form class="form-inline" action="{% url 'search_results' %}" method="get">
+            <input class="form-control mr-sm-2" name="q" type="search" placeholder="Search" aria-label="Search">
         </form>
     </center>
 {% endblock %}
@@ -21,7 +21,7 @@
     </style>
     <div class="art_content">
         <div class="card mb-5 px-0 mx-0">
-            <div class="card-header p-0 mx-0" >
+            <div class="card-header p-0 mx-0">
                 <div class="card-footer text-muted top-content">
                     <div class="post_teaser container">
                         <div class="post_teaser_publ text-white">
